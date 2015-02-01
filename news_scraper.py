@@ -10,7 +10,7 @@ def load_config():
 config = load_config()
 
 def poll_sources(config):
-  con = sqlite3.connect('headlines.db')
+  con = sqlite3.connect('../../scraperwiki.sqlite')
   c = con.cursor()
   articles = []
 
@@ -19,7 +19,7 @@ def poll_sources(config):
     for item in feed['items']:
       if c.execute("SELECT * FROM headlines WHERE link=?", (item['link'],)).fetchone() == None:
         article = (item['title'], item['summary'], item['published'], source['name'], source['feed'], item['link'])
-        print article
+        #print article
         articles.append(article)
 
   c.executemany("INSERT INTO headlines VALUES(?,?,?,?,?,?)", articles)
