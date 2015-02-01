@@ -1,6 +1,5 @@
 import yaml
-from pymongo import MongoClient
-from apscheduler.schedulers.blocking import BlockingScheduler
+import sqlite3
 import feedparser
 import os
 
@@ -11,24 +10,20 @@ def load_config():
 config = load_config()
 
 def poll_sources(config):
-  db = MongoClient(os.environ['MONGODB_URL'])
-  articles = db.newspapers.articles
+  con = sqlite3.connect('headlines.db')
+  c = con.cursor()
+  articles = []
 
   for source in config['sources']:
     feed = feedparser.parse(source['feed'])
     for item in feed['items']:
-      if (articles.find({"link": item['link']}).count() == 0):
-        article = {
-          'title': item['title'],
-          'summary': item['summary'],
-          'published': item['published'],
-          'origin': source['name'],
-          'feed': source['feed'],
-          'link': item['link']
-        }
+      if c.execute("SELECT * FROM headlines WHERE link=?", (item['link'],)).fetchone() == None:
+        article = (item['title'], item['summary'], item['published'], source['name'], source['feed'], item['link'])
+        print article
+        articles.append(article)
 
-        articles.insert(article)
-
-  db.close()
+  c.executemany("INSERT INTO headlines VALUES(?,?,?,?,?,?)", articles)
+  con.commit()
+  con.close()
 
 poll_sources(config)
