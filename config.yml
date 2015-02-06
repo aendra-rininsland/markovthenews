@@ -47,20 +47,20 @@ sources:
       - Science
       - Money
       - Travel
-  # -
-  #   description: "For when you want it to be classy and left-wing..."
-  #   feed: "http://feeds.feedburner.com/daily-express-news-showbiz"
-  #   name: "Daily Express"
-  #   sections: ~
-  # -
-  #   description: "For when you want it to be classy and right-wing..."
-  #   feed: "http://"
-  #   name: "Daily Mirror"
-  # -
-  #   description: "For when you want it to have BoJo..."
-  #   feed: "http://"
-  #   name: "London Evening Standard"
-  # -
-  #   description: "For when you want it to have numbers. ALL the numbers..."
-  #   feed: "http://"
-  #   name: "Financial Times"
+  -
+    description: "For when you want it to be classy and left-wing..."
+    feed: "http://feeds.feedburner.com/daily-express-news-showbiz"
+    name: "Daily Express"
+    sections:
+  -
+    description: "For when you want it to be classy and right-wing..."
+    feed: "http://www.mirror.co.uk/rss.xml"
+    name: "Daily Mirror"
+  -
+    description: "For when you want it to have BoJo..."
+    feed: "http://www.standard.co.uk/rss"
+    name: "London Evening Standard"
+  -
+    description: "For when you want it to have numbers. ALL the numbers..."
+    feed: "http://www.ft.com/rss/home/uk"
+    name: "Financial Times"
