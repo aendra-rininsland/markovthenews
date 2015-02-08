@@ -1,0 +1,66 @@
+# MarkovTheNews Configuration
+
+polling:
+  frequency: mon-fri
+  hour: 17
+sources:
+  -
+    description: "For when you want it to involve quinoa..."
+    feed: "http://feeds.theguardian.com/theguardian/uk/rss"
+    name: Guardian
+    sections:
+      - News
+      - Sport
+      - Comment
+      - Culture
+      - Business
+      - "Life and Style"
+      - Environment
+      - Tech
+  -
+    description: "For when you want to fall asleep sitting upright..."
+    feed: "http://www.telegraph.co.uk/rss"
+    name: Telegraph
+    sections:
+      - News
+      - World
+      - Sport
+      - Finance
+      - Comment
+      - Culture
+      - Travel
+      - Life
+      - Women
+      - Tech
+  -
+    description: "For when you want it to be nonsensical and rage-y..."
+    feed: "http://www.dailymail.co.uk/home/index.rss"
+    name: "Daily Mail"
+    sections:
+      - News
+      - U.S.
+      - Sport
+      - "TV and Showbiz"
+      - Australia
+      - Femail
+      - Health
+      - Science
+      - Money
+      - Travel
+  -
+    description: "For when you want it to be classy and left-wing..."
+    feed: "http://feeds.feedburner.com/daily-express-news-showbiz"
+    name: "Daily Express"
+    sections:
+  -
+    description: "For when you want it to be classy and right-wing..."
+    feed: "http://www.mirror.co.uk/rss.xml"
+    name: "Daily Mirror"
+  -
+    description: "For when you want it to have BoJo..."
+    feed: "http://www.standard.co.uk/rss"
+    name: "London Evening Standard"
+  -
+    description: "For when you want it to have numbers. ALL the numbers..."
+    feed: "http://www.ft.com/rss/home/uk"
+    name: "Financial Times"

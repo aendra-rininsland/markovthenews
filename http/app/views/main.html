@@ -1,0 +1,34 @@
+<header>
+  <h1>Markov The News!</h1>
+</header>
+
+<section>
+  <label for="selectedPapers">Newspapers</label>
+  <select multiple ng-model="selectedPapers" ng-options="paper.origin as paper.origin for paper in sources">
+  </select>
+
+  <label for="dateStart">Corpus start date</label>
+  <input name="dateStart" ng-model="dateStart" type="text" pick-a-date="date" pick-a-date-options="dateOptions" />
+
+  <label for="dateEnd">Corpus end date</label>
+  <input name="dateEnd" ng-model="dateEnd" type="text" pick-a-date="date" pick-a-date-options="dateOptions" />
+
+  <label for="markovOrder">Markov order</label>
+  <select name="markovOrder" ng-model="markovOrder">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+
+  <label for="limit">Token limit</label>
+  <input type="number" ng-model="tokenLimit" />
+
+  <button id="generate" ng-click="generate()">Generate</button>
+</section>
+
+<h4>Output</h4>
+<div id="output">
+  <p ng-repeat="line in output track by $index">{{line}}</p>
+</div>
