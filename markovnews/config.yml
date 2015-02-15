@@ -64,3 +64,11 @@ sources:
     description: "For when you want it to have numbers. ALL the numbers..."
     feed: "http://www.ft.com/rss/home/uk"
     name: "Financial Times"
+  -
+    description: "For when you want it paywalled"
+    feed: "http://www.thetimes.co.uk/tto/news/rss"
+    name: "The Times"
+  -
+    description: "For when you want it neoliberal"
+    feed: "http://www.economist.com/rss.xml"
+    name: "The Economist"

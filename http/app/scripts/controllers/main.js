@@ -8,7 +8,7 @@
  * Controller of the markovnewsApp
  */
 angular.module('markovnewsApp')
-  .controller('MainCtrl', function ($scope, $timeout, Scraperwiki) {
+  .controller('MainCtrl', function ($scope, $timeout, Scraperwiki, markov) {
     Scraperwiki.getSources().then(function(res){
       $scope.sources = res.data;
     });
@@ -27,7 +27,7 @@ angular.module('markovnewsApp')
     };
 
     $scope.generate = function() {
-      Scraperwiki.getHeadlines($scope.selectedPapers, $scope.dateStart, $scope.dateEnd).then(function(res){
+      Scraperwiki.getHeadlines($scope.selectedPapers).then(function(res){
         var rows = res.data;
         var headlines = [];
         $scope.output = [];
@@ -37,7 +37,7 @@ angular.module('markovnewsApp')
         });
 
         console.dir(headlines.join('\n'));
-        var m = nodemarkov(Number($scope.markovOrder));
+        var m = markov(Number($scope.markovOrder));
         m.seed(headlines.join('\n'), function(){
           for (var i = 0; i < 20; i++) {
             var rando = m.pick();

@@ -20,10 +20,11 @@ angular.module('markovnewsApp')
     };
 
     this.getHeadlines = function(paper, from, to) {
+      console.dir(paper);
       var select = 'SELECT title FROM headlines ';
       var where = paper ? 'WHERE origin == "' + paper + '" ' : ' ';
-      where = from ? where + 'AND published > ' + from + ' ' : ' ';
-      where = to ? where + 'AND published < ' + to + ' ' : ' ';
+      where = from ? where + 'AND published > ' + from + ' ' : where + ' ';
+      where = to ? where + 'AND published < ' + to + ' ' : where + ' ';
       var orderby = 'ORDER BY published DESC LIMIT 500';
       var query = select + where + orderby;
       console.log(query);

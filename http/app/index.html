@@ -29,7 +29,7 @@
 
     <section>
       <label for="selectedPapers">Newspapers</label>
-      <select multiple ng-model="selectedPapers" ng-options="paper.origin as paper.origin for paper in sources">
+      <select ng-model="selectedPapers" ng-options="paper.origin as paper.origin for paper in sources">
       </select>
 
       <label for="dateStart">Corpus start date</label>
@@ -96,7 +96,7 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/markov.js"></script>
+    <script src="scripts/markovjs.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>

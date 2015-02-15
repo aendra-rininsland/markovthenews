@@ -8,6 +8,9 @@
  * Service in the markovnewsApp.
  */
 angular.module('markovnewsApp')
-  .service('markov', function () {
-    console.dir(markov);
+  .run(function(markov){})
+  .service('markov', function ($window) {
+    var markov = $window.markov;
+    delete($window.markov);
+    return markov;
   });
