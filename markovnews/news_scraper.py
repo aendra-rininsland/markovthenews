@@ -18,9 +18,9 @@ def poll_sources(config):
   for source in config['sources']:
     feed = feedparser.parse(source['feed'])
     for item in feed['items']:
-      publishedTS = strptime(item['published'], '%a, %d %b %Y %H:%M:%S %Z')
+      publishedTS = strptime(item['published'], '%a, %d %b %Y %H:%M:%S %z')
       published = strftime('%Y-%m-%d %H:%M:%S', publishedTS)
-      
+
       if c.execute("SELECT * FROM headlines WHERE link=?", (item['link'],)).fetchone() == None:
         article = (item['title'], item['summary'], published, source['name'], source['feed'], item['link'])
         #print article
