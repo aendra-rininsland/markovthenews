@@ -70,5 +70,5 @@ sources:
     name: "The Times"
   -
     description: "For when you want it neoliberal"
-    feed: "http://www.economist.com/rss.xml"
+    feed: "http://www.economist.com/sections/leaders/rss.xml"
     name: "The Economist"
