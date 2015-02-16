@@ -18,15 +18,19 @@ def poll_sources(config):
   for source in config['sources']:
     feed = feedparser.parse(source['feed'])
     for item in feed['items']:
-      publishedTS = strptime(item['published'], '%a, %d %b %Y %H:%M:%S %z')
-      published = strftime('%Y-%m-%d %H:%M:%S', publishedTS)
+      try:
+        publishedTS = strptime(item['published'], '%a, %d %b %Y %H:%M:%S %z')
+        published = strftime('%Y-%m-%d %H:%M:%S', publishedTS)
+      except:
+        publishedTS = strptime(item['published'], '%a, %d %b %Y %H:%M:%S %Z')
+        published = strftime('%Y-%m-%d %H:%M:%S', publishedTS)
 
       if c.execute("SELECT * FROM headlines WHERE link=?", (item['link'],)).fetchone() == None:
-        article = (item['title'], item['summary'], published, source['name'], source['feed'], item['link'])
+        article = (None, item['title'], item['summary'], published, source['name'], source['feed'], item['link'])
         #print article
         articles.append(article)
 
-  c.executemany("INSERT INTO headlines VALUES(?,?,?,?,?,?)", articles)
+  c.executemany("INSERT INTO headlines VALUES(?,?,?,?,?,?,?)", articles)
   con.commit()
   con.close()
 
